@@ -20,7 +20,7 @@ fn main() {
     println!();
 
 
-    println!("\n\x1b[1;4;44mText styles \x1b[3m(1;4;44):\x1b[0m");
+    println!("\n\x1b[1;4;44mText styles (1;4;44):\x1b[0m");
     println!("  bold:      \x1b[1m 1 \x1b[0m");
     println!("  dim:       \x1b[2m 2 \x1b[0m");
     println!("  italic:    \x1b[3m 3 \x1b[0m");
@@ -31,7 +31,7 @@ fn main() {
     println!("  hidden:    \x1b[8m 8 \x1b[0m");
     println!("  strike:    \x1b[9m 9 \x1b[0m");
 
-    println!("\n\x1b[1;4;101mTerminal styles: (1;4;101)\x1b[0m");
+    println!("\n\x1b[1;4;101mTerminal styles (1;4;101):\x1b[0m");
     println!("  bash:   echo -e \x1b[33m'\\e[37;43m test \\e[0m'\x1b[m");
     println!("          echo -e \x1b[33m\"\\033[46m Hello \\033[1m\"\x1b[m");
     println!("  rust:   println!(\x1b[33m\"\\x1b[37;43m test \\x1b[0m\")\x1b[m");
