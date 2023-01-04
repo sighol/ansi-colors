@@ -19,7 +19,7 @@ fn main() {
     print!("\x1b[48;2;103;234;107m rgb: 48;2;103;234;107\x1b[0m");
     println!();
 
-    println!("\n\x1b[1;4;44mText styles (1;4;44):\x1b[0m");
+    println!("\n\x1b[1;4;44mText styles:\x1b[0m");
     println!("  bold:      \x1b[1m 1 \x1b[0m");
     println!("  dim:       \x1b[2m 2 \x1b[0m");
     println!("  italic:    \x1b[3m 3 \x1b[0m");
@@ -30,13 +30,35 @@ fn main() {
     println!("  hidden:    \x1b[8m 8 \x1b[0m");
     println!("  strike:    \x1b[9m 9 \x1b[0m");
 
-    println!("\n\x1b[1;4;101mTerminal styles (1;4;101):\x1b[0m");
-    println!("  bash:   echo -e \x1b[33m'\\e[37;43m test \\e[0m'\x1b[m");
-    println!("          echo -e \x1b[33m\"\\033[46m Hello \\033[1m\"\x1b[m");
-    println!("  rust:   println!(\x1b[33m\"\\x1b[37;43m test \\x1b[0m\")\x1b[m");
-    println!("  rust:   println!(\x1b[33m\"\\u{{001b}}[37;43m test \\u{{001b}}[0m\")\x1b[m");
-    println!("  kotlin: println(\x1b[33m\"\\u001b[37;43m test \\u001b[0m\")\x1b[m");
-    println!("  python: print(\x1b[33m\"\\x1b[1;37;46m Hello \\x1b[0m\")\x1b[m");
-    println!("          print(\x1b[33m\"\\033[1;37;46m Hello \\033[0m\")\x1b[m");
-    println!("          print(\x1b[33m\"\\N{{ESC}}[1;37;46m Hello \\033[0m\")\x1b[m");
+    println!("\n\x1b[1;4;101mLanguages:\x1b[0m");
+    println!(
+        "  bash:   {}, {}, {}. Use \x1b[33mecho -e\x1b[0m or \x1b[33mprintf\x1b[0m",
+        c("\\x1b", "33"),
+        c("\\033", "33"),
+        c("\\e", "33")
+    );
+    println!(
+        "  python: {}, {}, {}.",
+        c("\\x1b", "33"),
+        c("\\033", "33"),
+        c("\\N{ESC}", "33")
+    );
+    println!("  rust:   {}, {}.", c("\\x1b", "33"), c("\\u{{001b}}", "33"));
+
+    // println!("\n\x1b[1;4;105m Examples:\x1b[0m");
+    // println!("  - {}", c("1;4;44", "1;4;44"));
+    // println!("  - {}", c("1;105", "1;105"));
+    // println!("  - {}", c("1;46", "1;46"));
+    // println!("  - {}", c("1;96", "1;96"));
+
+}
+
+fn c(input: &str, colors: &str) -> String {
+    let mut s = String::new();
+    s.push_str("\x1b[");
+    s.push_str(colors);
+    s.push_str("m");
+    s.push_str(input);
+    s.push_str("\x1b[0m");
+    s
 }
