@@ -45,21 +45,8 @@ fn main() {
     );
     println!("  rust:   {}, {}.", c("\\x1b", "33"), c("\\u{001b}", "33"));
     println!("  kotlin: {}.", c("\\u001b", "33"));
-
-    // println!("\n\x1b[1;4;105m Examples:\x1b[0m");
-    // println!("  - {}", c("1;4;44", "1;4;44"));
-    // println!("  - {}", c("1;105", "1;105"));
-    // println!("  - {}", c("1;46", "1;46"));
-    // println!("  - {}", c("1;96", "1;96"));
-
 }
 
 fn c(input: &str, colors: &str) -> String {
-    let mut s = String::new();
-    s.push_str("\x1b[");
-    s.push_str(colors);
-    s.push_str("m");
-    s.push_str(input);
-    s.push_str("\x1b[0m");
-    s
+    format!("\x1b[{colors}m{input}\x1b[0m")
 }
