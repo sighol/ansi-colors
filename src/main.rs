@@ -16,9 +16,8 @@ fn main() {
     for i in 100..=107 {
         print!("\x1b[{i}m {i} \x1b[0m");
     }
-    print!("\x1b[48;2;103;234;107m rgb: 38;2;103;234;107\x1b[0m");
+    print!("\x1b[48;2;103;234;107m rgb: 48;2;103;234;107\x1b[0m");
     println!();
-
 
     println!("\n\x1b[1;4;44mText styles (1;4;44):\x1b[0m");
     println!("  bold:      \x1b[1m 1 \x1b[0m");
@@ -41,4 +40,3 @@ fn main() {
     println!("          print(\x1b[33m\"\\033[1;37;46m Hello \\033[0m\")\x1b[m");
     println!("          print(\x1b[33m\"\\N{{ESC}}[1;37;46m Hello \\033[0m\")\x1b[m");
 }
-
